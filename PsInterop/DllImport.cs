@@ -6,7 +6,7 @@ using System.Security;
 
 using HANDLE = System.IntPtr;
 
-namespace InSolve.dmach.Win32
+namespace InSolve.dmach.PsInterop
 {
     static class DllImport
     {

@@ -2,7 +2,7 @@ using System;
 
 using HANDLE = System.IntPtr;
 
-namespace InSolve.dmach.Win32
+namespace InSolve.dmach.PsInterop
 {
     /// <summary>
     /// Process Handle with cache process information

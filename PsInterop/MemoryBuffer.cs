@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 using System.Runtime.InteropServices;
 
-namespace InSolve.dmach.Win32
+namespace InSolve.dmach.PsInterop
 {
     /// <summary>
     /// Managed memory buffer

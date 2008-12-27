@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 using System.Diagnostics;
 
-using InSolve.dmach.Win32;
+using InSolve.dmach.PsInterop;
 
 namespace pcgi
 {

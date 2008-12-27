@@ -7,7 +7,7 @@ using System.IO;
 using HANDLE = System.IntPtr;
 
 
-namespace InSolve.dmach.Win32
+namespace InSolve.dmach.PsInterop
 {
     /// <summary>
     /// Win32 Wrapper

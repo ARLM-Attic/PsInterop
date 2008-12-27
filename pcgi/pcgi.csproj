@@ -49,9 +49,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\dmach.Win32\dmach.Win32.csproj">
-      <Project>{1864E57C-1C74-4BAF-B0D3-1E6458BE0989}</Project>
-      <Name>dmach.Win32</Name>
+    <ProjectReference Include="..\PsInterop\PsInterop.csproj">
+      <Project>{112BF147-100E-40AD-B01C-D212DABCA479}</Project>
+      <Name>PsInterop</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />

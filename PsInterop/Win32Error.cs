@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace InSolve.dmach.Win32
+namespace InSolve.dmach.PsInterop
 {
     static class Win32Error
     {

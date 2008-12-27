@@ -5,7 +5,7 @@ using System.Runtime.InteropServices;
 
 using HANDLE = System.IntPtr;
 
-namespace InSolve.dmach.Win32
+namespace InSolve.dmach.PsInterop
 {
     /// <summary>
     /// Represent Terminal Service api

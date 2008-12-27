@@ -1,0 +1,416 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>PsInterop</name>
+    </assembly>
+    <members>
+        <member name="T:InSolve.dmach.PsInterop.TerminalServices">
+            <summary>
+            Represent Terminal Service api
+            </summary>
+        </member>
+        <member name="M:InSolve.dmach.PsInterop.TerminalServices.Open(System.String)">
+            <summary>
+            Opens the specified terminal server
+            </summary>
+            <param name="serverName">NetBIOS name of the terminal server</param>
+        </member>
+        <member name="M:InSolve.dmach.PsInterop.TerminalServices.Open">
+            <summary>
+            Opens terminal server
+            </summary>
+        </member>
+        <member name="M:InSolve.dmach.PsInterop.TerminalServices.Close">
+            <summary>
+            Closes a terminal server
+            </summary>
+        </member>
+        <member name="M:InSolve.dmach.PsInterop.TerminalServices.EnumerateProcesses">
+            <summary>
+            Retrieves information about the active processes on a terminal server
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:InSolve.dmach.PsInterop.TerminalServices.GetNextProcess(InSolve.dmach.PsInterop.WTSProcessInfo@)">
+            <summary>
+            Retrieves next process from buffer
+            </summary>
+            <param name="WTSpi">process information</param>
+            <returns></returns>
+        </member>
+        <member name="M:InSolve.dmach.PsInterop.TerminalServices.FreeMemory">
+            <summary>
+            Frees memory allocated by a Terminal Services function
+            </summary>
+        </member>
+        <member name="M:InSolve.dmach.PsInterop.TerminalServices.GetProcessName(InSolve.dmach.PsInterop.WTSProcessInfo)">
+            <summary>
+            Retrieves process name from buffer
+            </summary>
+            <param name="info">process information</param>
+            <returns></returns>
+        </member>
+        <member name="M:InSolve.dmach.PsInterop.TerminalServices.Dispose">
+            <summary>
+            Releases all resources used by the TerminalServices
+            </summary>
+        </member>
+        <member name="T:InSolve.dmach.PsInterop.ProcessPlatformInfo">
+            <summary>
+            Represent platform info
+            </summary>
+        </member>
+        <member name="F:InSolve.dmach.PsInterop.ProcessPlatformInfo.Win32">
+            <summary>
+            Pure Win32 environment
+            </summary>
+        </member>
+        <member name="F:InSolve.dmach.PsInterop.ProcessPlatformInfo.Win64">
+            <summary>
+            Pure Win64 environment
+            </summary>
+        </member>
+        <member name="F:InSolve.dmach.PsInterop.ProcessPlatformInfo.Wow64">
+            <summary>
+            Win32 process on Win64 environment
+            </summary>
+        </member>
+        <member name="F:InSolve.dmach.PsInterop.ProcessPlatformInfo.NotSupported">
+            <summary>
+            Not supported platform
+            </summary>
+        </member>
+        <member name="T:InSolve.dmach.PsInterop.ProcessHandle">
+            <summary>
+            Process Handle with cache process information
+            </summary>
+        </member>
+        <member name="F:InSolve.dmach.PsInterop.ProcessHandle.Handle">
+            <summary>
+            Process Handle
+            </summary>
+        </member>
+        <member name="F:InSolve.dmach.PsInterop.ProcessHandle.ProcessId">
+            <summary>
+            Process ID
+            </summary>
+        </member>
+        <member name="F:InSolve.dmach.PsInterop.ProcessHandle.Platform">
+            <summary>
+            Process Platform
+            </summary>
+        </member>
+        <member name="F:InSolve.dmach.PsInterop.ProcessHandle.Access">
+            <summary>
+            Access flags
+            </summary>
+        </member>
+        <member name="P:InSolve.dmach.PsInterop.ProcessHandle.IsSupported">
+            <summary>
+            Process platform supported for some methods
+            </summary>
+        </member>
+        <member name="T:InSolve.dmach.PsInterop.MemoryBuffer">
+            <summary>
+            Managed memory buffer
+            </summary>
+        </member>
+        <member name="F:InSolve.dmach.PsInterop.MemoryBuffer.HelperArray">
+            <summary>
+            Always is 4kb
+            </summary>
+        </member>
+        <member name="M:InSolve.dmach.PsInterop.MemoryBuffer.#ctor(System.Int32)">
+            <summary>
+            Constructor with specified buffer size
+            </summary>
+            <param name="size">Size in bytes</param>
+        </member>
+        <member name="M:InSolve.dmach.PsInterop.MemoryBuffer.#ctor">
+            <summary>
+            Constructor with default buffer size - 4 kb
+            </summary>
+        </member>
+        <member name="M:InSolve.dmach.PsInterop.MemoryBuffer.Finalize">
+            <summary>
+            Destructor
+            </summary>
+        </member>
+        <member name="M:InSolve.dmach.PsInterop.MemoryBuffer.Dispose">
+            <summary>
+            Dispose object
+            </summary>
+        </member>
+        <member name="P:InSolve.dmach.PsInterop.MemoryBuffer.AllocatedSize">
+            <summary>
+            Buffer size in bytes
+            </summary>
+        </member>
+        <member name="P:InSolve.dmach.PsInterop.MemoryBuffer.InnerText">
+            <summary>
+            Inner managed buffer, read this if errors
+            </summary>
+        </member>
+        <member name="T:InSolve.dmach.PsInterop.StrSize">
+            <summary>
+            Cache native structure size calculation
+            </summary>
+        </member>
+        <member name="F:InSolve.dmach.PsInterop.UNICODE_STRING.Length">
+            <summary>
+            Specifies the length, in bytes, of the string pointed to by the Buffer member, 
+            not including the terminating NULL character, if any.
+            </summary>
+        </member>
+        <member name="F:InSolve.dmach.PsInterop.UNICODE_STRING.MaximumLength">
+            <summary>
+            Specifies the total size, in bytes, of memory allocated for Buffer. 
+            Up to MaximumLength bytes may be written into the buffer without trampling memory.
+            </summary>
+        </member>
+        <member name="F:InSolve.dmach.PsInterop.UNICODE_STRING.Address">
+            <summary>
+            Pointer to a wide-character string.
+            </summary>
+        </member>
+        <member name="T:InSolve.dmach.PsInterop.PROCESS_ACCESS">
+            <summary>
+            Process Security and Access Rights
+            </summary>
+        </member>
+        <member name="F:InSolve.dmach.PsInterop.PROCESS_ACCESS.All">
+            <summary>
+            All possible access rights for a process object.
+            </summary>
+        </member>
+        <member name="F:InSolve.dmach.PsInterop.PROCESS_ACCESS.Terminate">
+            <summary>
+            Required to terminate a process
+            </summary>
+        </member>
+        <member name="F:InSolve.dmach.PsInterop.PROCESS_ACCESS.CreateThread">
+            <summary>
+            Required to create a thread.
+            </summary>
+        </member>
+        <member name="F:InSolve.dmach.PsInterop.PROCESS_ACCESS.VMOperation">
+            <summary>
+            Required to perform an operation on the address space of a process
+            </summary>
+        </member>
+        <member name="F:InSolve.dmach.PsInterop.PROCESS_ACCESS.VMRead">
+            <summary>
+            Required to read memory in a process
+            </summary>
+        </member>
+        <member name="F:InSolve.dmach.PsInterop.PROCESS_ACCESS.VMWrite">
+            <summary>
+            Required to write to memory in a process
+            </summary>
+        </member>
+        <member name="F:InSolve.dmach.PsInterop.PROCESS_ACCESS.DupHandle">
+            <summary>
+            Required to duplicate a handle
+            </summary>
+        </member>
+        <member name="F:InSolve.dmach.PsInterop.PROCESS_ACCESS.SetInformation">
+            <summary>
+            Required to set certain information about a process, such as its priority class
+            </summary>
+        </member>
+        <member name="F:InSolve.dmach.PsInterop.PROCESS_ACCESS.QueryInformation">
+            <summary>
+            Required to retrieve certain information about a process, such as its token, exit code, and priority class
+            </summary>
+        </member>
+        <member name="F:InSolve.dmach.PsInterop.PROCESS_ACCESS.Synchronize">
+            <summary>
+            Required to wait for the process to terminate 
+            </summary>
+        </member>
+        <member name="T:InSolve.dmach.PsInterop.PROCESSOR_ARCHITECTURE">
+            <summary>
+            Identifies the processor and bits-per-word of the platform targeted by an executable.
+            </summary>
+        </member>
+        <member name="F:InSolve.dmach.PsInterop.PROCESSOR_ARCHITECTURE.PROCESSOR_ARCHITECTURE_UNKNOWN">
+            <summary>
+            Unknown processor
+            </summary>
+        </member>
+        <member name="F:InSolve.dmach.PsInterop.PROCESSOR_ARCHITECTURE.PROCESSOR_ARCHITECTURE_INTEL">
+            <summary>
+            x86 processor
+            </summary>
+        </member>
+        <member name="F:InSolve.dmach.PsInterop.PROCESSOR_ARCHITECTURE.PROCESSOR_ARCHITECTURE_IA64">
+            <summary>
+            Intel Itanium processor
+            </summary>
+        </member>
+        <member name="F:InSolve.dmach.PsInterop.PROCESSOR_ARCHITECTURE.PROCESSOR_ARCHITECTURE_AMD64">
+            <summary>
+            AMD64 or E64MT processor
+            </summary>
+        </member>
+        <member name="T:InSolve.dmach.PsInterop.WTSProcessInfo">
+            <summary>
+            Contains information about a process running on a terminal server
+            </summary>
+        </member>
+        <member name="F:InSolve.dmach.PsInterop.WTSProcessInfo.SessionId">
+            <summary>
+            Terminal Services session identifier for the session associated with the process.
+            </summary>
+        </member>
+        <member name="F:InSolve.dmach.PsInterop.WTSProcessInfo.ProcessId">
+            <summary>
+            Process identifier that uniquely identifies the process on the terminal server.
+            </summary>
+        </member>
+        <member name="F:InSolve.dmach.PsInterop.WTSProcessInfo.pProcessName">
+            <summary>
+            Pointer to a null-terminated string containing the name of the executable file associated with the process.
+            </summary>
+        </member>
+        <member name="F:InSolve.dmach.PsInterop.WTSProcessInfo.pUserSid">
+            <summary>
+            Pointer to the user SID in the process's primary access token.
+            </summary>
+        </member>
+        <member name="T:InSolve.dmach.PsInterop.Win32Wrapper">
+            <summary>
+            Win32 Wrapper
+            </summary>
+        </member>
+        <member name="M:InSolve.dmach.PsInterop.Win32Wrapper.GetNativeProcessorInfo">
+            <summary>
+            Retrieves information about the current system to an application running under WOW64. If the function is called from a 64-bit application, it is equivalent to the GetProcessorInfo method
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:InSolve.dmach.PsInterop.Win32Wrapper.GetProcessorInfo">
+            <summary>
+            Retrieves information about the current system. To retrieve accurate information for an application running on WOW64, call the GetNativeProcessorInfo method
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:InSolve.dmach.PsInterop.Win32Wrapper.GetEnvironment(InSolve.dmach.PsInterop.ProcessHandle@,InSolve.dmach.PsInterop.MemoryBuffer)">
+            <summary>
+            Retrieves process environment
+            </summary>
+            <param name="p">Handle to the process</param>
+            <param name="buffer">Helper memory buffer</param>
+            <returns></returns>
+        </member>
+        <member name="M:InSolve.dmach.PsInterop.Win32Wrapper.OpenProcessHandle(System.UInt32)">
+            <summary>
+            Opens an existing local process object
+            </summary>
+            <param name="processId">The identifier of the local process to be opened</param>
+            <returns></returns>
+        </member>
+        <member name="M:InSolve.dmach.PsInterop.Win32Wrapper.OpenProcessHandle(System.UInt32,InSolve.dmach.PsInterop.PROCESS_ACCESS)">
+            <summary>
+            Opens an existing local process object
+            </summary>
+            <param name="processId">The identifier of the local process to be opened</param>
+            <param name="access">The access to the process object</param>
+            <returns></returns>
+        </member>
+        <member name="M:InSolve.dmach.PsInterop.Win32Wrapper.CloseProcessHandle(InSolve.dmach.PsInterop.ProcessHandle)">
+            <summary>
+            Closes an open process handle
+            </summary>
+            <param name="p">A valid handle to an open process</param>
+        </member>
+        <member name="M:InSolve.dmach.PsInterop.Win32Wrapper.GetCommandLine(InSolve.dmach.PsInterop.ProcessHandle@,InSolve.dmach.PsInterop.MemoryBuffer)">
+            <summary>
+            Retrieves process command line
+            </summary>
+            <param name="p">Handle to the process</param>
+            <param name="buffer">Helper memory buffer</param>
+            <returns></returns>
+        </member>
+        <member name="M:InSolve.dmach.PsInterop.Win32Wrapper.GetCommandLine(InSolve.dmach.PsInterop.ProcessHandle@,InSolve.dmach.PsInterop.MemoryBuffer,System.String)">
+            <summary>
+            Retrieves process command line without process name
+            </summary>
+            <param name="p">Handle to the process</param>
+            <param name="buffer">Helper memory buffer</param>
+            <param name="processImage">Process Image file name</param>
+            <returns></returns>
+        </member>
+        <member name="M:InSolve.dmach.PsInterop.Win32Wrapper.GetProcessName(System.String)">
+            <summary>
+            Retrieves process name from process image
+            </summary>
+            <param name="processImage">Process Image</param>
+            <returns></returns>
+        </member>
+        <member name="M:InSolve.dmach.PsInterop.Win32Wrapper.GetCurrentDirectory(InSolve.dmach.PsInterop.ProcessHandle@,InSolve.dmach.PsInterop.MemoryBuffer)">
+            <summary>
+            Retrieves process current directory
+            </summary>
+            <param name="p">Handle to the process</param>
+            <param name="buffer">Helper memory buffer</param>
+            <returns></returns>
+        </member>
+        <member name="M:InSolve.dmach.PsInterop.Win32Wrapper.GetImagePathName(InSolve.dmach.PsInterop.ProcessHandle@,InSolve.dmach.PsInterop.MemoryBuffer)">
+            <summary>
+            Retrieves process image file name
+            </summary>
+            <param name="p">Handle to the process</param>
+            <param name="buffer">Helper memory buffer</param>
+            <returns></returns>
+        </member>
+        <member name="M:InSolve.dmach.PsInterop.Win32Wrapper.GetVirtualMemorySize(InSolve.dmach.PsInterop.ProcessHandle)">
+            <summary>
+            Retrieves information about the memory usage of the specified process
+            </summary>
+            <param name="p">Handle to the process</param>
+            <returns></returns>
+        </member>
+        <member name="M:InSolve.dmach.PsInterop.Win32Wrapper.GetProcessTimes(InSolve.dmach.PsInterop.ProcessHandle,System.Double@,System.Double@)">
+            <summary>
+            Retrieves timing information for the specified process
+            </summary>
+            <param name="p">Handle to the process</param>
+            <param name="cpuTime">Amount of time that the process has executed in kernel and user mode (in milliseconds)</param>
+            <param name="execTime">Creation time of the process (in milliseconds)</param>
+        </member>
+        <member name="M:InSolve.dmach.PsInterop.Win32Wrapper.GetProcessTimes(InSolve.dmach.PsInterop.ProcessHandle,System.Double@,System.Double@,System.Double@)">
+            <summary>
+            Retrieves timing information for the specified process
+            </summary>
+            <param name="p">Handle to the process</param>
+            <param name="cpuUserTime">Amount of time that the process has executed in user mode (in milliseconds)</param>
+            <param name="cpuKernelTime">Amount of time that the process has executed in kernel mode (in milliseconds)</param>
+            <param name="execTime">Creation time of the process (in milliseconds)</param>
+        </member>
+        <member name="M:InSolve.dmach.PsInterop.Win32Wrapper.LookupAccountSid(System.IntPtr,InSolve.dmach.PsInterop.MemoryBuffer)">
+            <summary>
+            Retrieves the name of the account for this SID and the name of the first domain on which this SID is found
+            </summary>
+            <param name="sid">Pointer to the SID to look up</param>
+            <param name="buffer">Helper memory buffer</param>
+            <returns></returns>
+        </member>
+        <member name="M:InSolve.dmach.PsInterop.Win32Wrapper.TerminateProcess(InSolve.dmach.PsInterop.ProcessHandle)">
+            <summary>
+            Terminates the specified process and all of its threads
+            </summary>
+            <param name="p">Handle to the process</param>
+        </member>
+        <member name="F:InSolve.dmach.PsInterop.Win32Error.ERROR_NONE_MAPPED">
+            <summary>
+            No mapping between account names and security IDs was done.
+            </summary>
+        </member>
+        <member name="F:InSolve.dmach.PsInterop.Win32Error.ERROR_INSUFFICIENT_BUFFER">
+            <summary>
+            The data area passed to a system call is too small.
+            </summary>
+        </member>
+    </members>
+</doc>
