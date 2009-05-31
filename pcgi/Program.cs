@@ -187,18 +187,20 @@ Goodbye, World!
 
                             int currentId = System.Diagnostics.Process.GetCurrentProcess().Id;
                             if (kill && p.ProcessId != currentId)
+                            {
                                 Win32Wrapper.TerminateProcess(p);
+                                string message = string.Format("{0}{1} ({2}) {3}",
+                                    (kill) ? "KILL " : "",
+                                    WTSpi.ProcessId,
+                                    processName,
+                                    pValue);
 
-                            string message = string.Format("{0}{1} ({2}) {3}",
-                                (kill) ? "KILL " : "",
-                                WTSpi.ProcessId,
-                                processName,
-                                pValue);
+                                if (screenWidth && message.Length >= Console.WindowWidth)
+                                    message = message.Substring(0, Console.WindowWidth - 4) + "...";
 
-                            if (screenWidth && message.Length >= Console.WindowWidth)
-                                message = message.Substring(0, Console.WindowWidth - 4) + "...";
+                                Console.WriteLine(message);
+                            }
 
-                            Console.WriteLine(message);
                         }
                         catch (Exception exc)
                         {
