@@ -22,6 +22,7 @@ namespace pcgi
             bool onlyUrl = false;
             bool screenWidth = false;
             bool kill = false;
+            int currentId = System.Diagnostics.Process.GetCurrentProcess().Id;
 
             try
             {
@@ -185,22 +186,23 @@ Goodbye, World!
                                     continue;
                             }
 
-                            int currentId = System.Diagnostics.Process.GetCurrentProcess().Id;
+                            string killMessage = "";
                             if (kill && p.ProcessId != currentId)
                             {
                                 Win32Wrapper.TerminateProcess(p);
-                                string message = string.Format("{0}{1} ({2}) {3}",
-                                    (kill) ? "KILL " : "",
-                                    WTSpi.ProcessId,
-                                    processName,
-                                    pValue);
-
-                                if (screenWidth && message.Length >= Console.WindowWidth)
-                                    message = message.Substring(0, Console.WindowWidth - 4) + "...";
-
-                                Console.WriteLine(message);
+                                killMessage = "KILL ";
                             }
 
+                            string message = string.Format("{0}{1} ({2}) {3}",
+                                killMessage,
+                                WTSpi.ProcessId,
+                                processName,
+                                pValue);
+
+                            if (screenWidth && message.Length >= Console.WindowWidth)
+                                message = message.Substring(0, Console.WindowWidth - 4) + "...";
+
+                            Console.WriteLine(message);
                         }
                         catch (Exception exc)
                         {
