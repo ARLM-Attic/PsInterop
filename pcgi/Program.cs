@@ -185,7 +185,8 @@ Goodbye, World!
                                     continue;
                             }
 
-                            if (kill)
+                            int currentId = System.Diagnostics.Process.GetCurrentProcess().Id;
+                            if (kill && p.ProcessId != currentId)
                                 Win32Wrapper.TerminateProcess(p);
 
                             string message = string.Format("{0}{1} ({2}) {3}",
