@@ -278,6 +278,66 @@
             Pointer to the user SID in the process's primary access token.
             </summary>
         </member>
+        <member name="T:InSolve.dmach.PsInterop.MEMORYSTATUSEX">
+            <summary>
+            Contains information about the current state of both physical and virtual memory, 
+            including extended memory.
+            </summary>
+        </member>
+        <member name="F:InSolve.dmach.PsInterop.MEMORYSTATUSEX.dwLength">
+            <summary>
+            The size of the structure, in bytes. You must set this member 
+            before calling GlobalMemoryStatusEx.
+            </summary>
+        </member>
+        <member name="F:InSolve.dmach.PsInterop.MEMORYSTATUSEX.dwMemoryLoad">
+            <summary>
+            A number between 0 and 100 that specifies the approximate percentage 
+            of physical memory that is in use (0 indicates no memory use and 100 
+            indicates full memory use).
+            </summary>
+        </member>
+        <member name="F:InSolve.dmach.PsInterop.MEMORYSTATUSEX.ullTotalPhys">
+            <summary>
+            The amount of actual physical memory, in bytes.
+            </summary>
+        </member>
+        <member name="F:InSolve.dmach.PsInterop.MEMORYSTATUSEX.ullAvailPhys">
+            <summary>
+            The amount of physical memory currently available, in bytes. This is 
+            the amount of physical memory that can be immediately reused without 
+            having to write its contents to disk first. It is the sum of the size 
+            of the standby, free, and zero lists.
+            </summary>
+        </member>
+        <member name="F:InSolve.dmach.PsInterop.MEMORYSTATUSEX.ullTotalPageFile">
+            <summary>
+            The current committed memory limit for the system or the current process, 
+            whichever is smaller, in bytes.
+            </summary>
+        </member>
+        <member name="F:InSolve.dmach.PsInterop.MEMORYSTATUSEX.ullAvailPageFile">
+            <summary>
+            The maximum amount of memory the current process can commit, in bytes.
+            </summary>
+        </member>
+        <member name="F:InSolve.dmach.PsInterop.MEMORYSTATUSEX.ullTotalVirtual">
+            <summary>
+            The size of the user-mode portion of the virtual address space of the calling 
+            process, in bytes.
+            </summary>
+        </member>
+        <member name="F:InSolve.dmach.PsInterop.MEMORYSTATUSEX.ullAvailVirtual">
+            <summary>
+            The amount of unreserved and uncommitted memory currently in the user-mode portion 
+            of the virtual address space of the calling process, in bytes.
+            </summary>
+        </member>
+        <member name="F:InSolve.dmach.PsInterop.MEMORYSTATUSEX.ullAvailExtendedVirtual">
+            <summary>
+            Reserved. This value is always 0.
+            </summary>
+        </member>
         <member name="T:InSolve.dmach.PsInterop.Win32Wrapper">
             <summary>
             Win32 Wrapper
@@ -401,6 +461,13 @@
             Terminates the specified process and all of its threads
             </summary>
             <param name="p">Handle to the process</param>
+        </member>
+        <member name="M:InSolve.dmach.PsInterop.Win32Wrapper.GetMemorySize(System.UInt64@,System.UInt64@)">
+            <summary>
+            Retrieves information about the system's current usage of physical memory.
+            </summary>
+            <param name="memTotal">The amount of actual physical memory, in bytes.</param>
+            <param name="memFree">The amount of physical memory currently available, in bytes.</param>
         </member>
         <member name="F:InSolve.dmach.PsInterop.Win32Error.ERROR_NONE_MAPPED">
             <summary>

@@ -24,6 +24,7 @@ namespace pcgi
             bool kill = false;
             int currentId = System.Diagnostics.Process.GetCurrentProcess().Id;
 
+
             try
             {
                 char[] paramPrefix = new char[] { '/', '-' };
@@ -187,6 +188,7 @@ Goodbye, World!
                             }
 
                             string killMessage = "";
+
                             if (kill && p.ProcessId != currentId)
                             {
                                 Win32Wrapper.TerminateProcess(p);

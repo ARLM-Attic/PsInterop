@@ -19,6 +19,7 @@ namespace InSolve.dmach.PsInterop
         public static readonly int PROCESS_PARAMETERS = Marshal.SizeOf(typeof(PROCESS_PARAMETERS));
         public static readonly int PROCESS_MEMORY_COUNTERS = Marshal.SizeOf(typeof(PROCESS_MEMORY_COUNTERS));
         public static readonly int WTSProcessInfo = Marshal.SizeOf(typeof(WTSProcessInfo));
+        public static readonly int MEMORYSTATUSEX = Marshal.SizeOf(typeof(MEMORYSTATUSEX));
     }
 
     [StructLayout(LayoutKind.Sequential)]
@@ -255,5 +256,68 @@ namespace InSolve.dmach.PsInterop
         /// </summary>
         public IntPtr pUserSid;
     }
+
+    /// <summary>
+    /// Contains information about the current state of both physical and virtual memory, 
+    /// including extended memory.
+    /// </summary>
+    [StructLayout(LayoutKind.Sequential)]
+    public struct MEMORYSTATUSEX
+    {
+        /// <summary>
+        /// The size of the structure, in bytes. You must set this member 
+        /// before calling GlobalMemoryStatusEx.
+        /// </summary>
+        public uint dwLength;
+
+        /// <summary>
+        /// A number between 0 and 100 that specifies the approximate percentage 
+        /// of physical memory that is in use (0 indicates no memory use and 100 
+        /// indicates full memory use).
+        /// </summary>
+        public uint dwMemoryLoad;
+
+        /// <summary>
+        /// The amount of actual physical memory, in bytes.
+        /// </summary>
+        public ulong ullTotalPhys;
+
+        /// <summary>
+        /// The amount of physical memory currently available, in bytes. This is 
+        /// the amount of physical memory that can be immediately reused without 
+        /// having to write its contents to disk first. It is the sum of the size 
+        /// of the standby, free, and zero lists.
+        /// </summary>
+        public ulong ullAvailPhys;
+
+        /// <summary>
+        /// The current committed memory limit for the system or the current process, 
+        /// whichever is smaller, in bytes.
+        /// </summary>
+        public ulong ullTotalPageFile;
+
+        /// <summary>
+        /// The maximum amount of memory the current process can commit, in bytes.
+        /// </summary>
+        public ulong ullAvailPageFile;
+
+        /// <summary>
+        /// The size of the user-mode portion of the virtual address space of the calling 
+        /// process, in bytes.
+        /// </summary>
+        public ulong ullTotalVirtual;
+
+        /// <summary>
+        /// The amount of unreserved and uncommitted memory currently in the user-mode portion 
+        /// of the virtual address space of the calling process, in bytes.
+        /// </summary>
+        public ulong ullAvailVirtual;
+
+        /// <summary>
+        /// Reserved. This value is always 0.
+        /// </summary>
+        public ulong ullAvailExtendedVirtual;
+    }
+
 
 }

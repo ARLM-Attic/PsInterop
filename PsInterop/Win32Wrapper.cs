@@ -20,6 +20,7 @@ namespace InSolve.dmach.PsInterop
         static bool ProcessorInfoAssigned = false;
         static PROCESSOR_ARCHITECTURE ProcessorInfoNative;
         static bool ProcessorInfoNativeAssigned = false;
+        
 
         /// <summary>
         /// Retrieves information about the current system to an application running under WOW64. If the function is called from a 64-bit application, it is equivalent to the GetProcessorInfo method
@@ -382,5 +383,24 @@ namespace InSolve.dmach.PsInterop
         {
             DllImport.TerminateProcess(p.Handle, -1);
         }
+
+        /// <summary>
+        /// Retrieves information about the system's current usage of physical memory.
+        /// </summary>
+        /// <param name="memTotal">The amount of actual physical memory, in bytes.</param>
+        /// <param name="memFree">The amount of physical memory currently available, in bytes.</param>
+        public static void GetMemorySize(out ulong memTotal, out ulong memFree)
+        {
+            MEMORYSTATUSEX mem = new MEMORYSTATUSEX();
+            mem.dwLength = (uint)StrSize.MEMORYSTATUSEX;
+            if (DllImport.GlobalMemoryStatusEx(ref mem))
+            {
+                memFree = mem.ullAvailPhys;
+                memTotal = mem.ullTotalPhys;
+            }
+            else
+                throw new ApplicationException("GlobalMemoryStatusEx() error: " + Marshal.GetLastWin32Error());
+        }
+
     }
 }

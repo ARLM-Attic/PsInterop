@@ -116,5 +116,11 @@ namespace InSolve.dmach.PsInterop
             bool bInheritHandle,
             uint dwProcessId
             );
+
+        [DllImport("kernel32.dll", SetLastError = true)]
+        public static extern bool GlobalMemoryStatusEx(
+            ref MEMORYSTATUSEX lpBuffer
+            );
+
     }
 }
